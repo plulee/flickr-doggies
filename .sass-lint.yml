@@ -1,0 +1,7 @@
+files:
+  include: 'src/static/**/*.s+(a|c)ss'
+formatter: stylish
+rules:
+  indentation:
+    - 2
+    - size: 4

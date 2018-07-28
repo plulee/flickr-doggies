@@ -1,2 +1,3 @@
 # flickr-doggies
-find doggies on flickr
+
+find dogs on flickr
