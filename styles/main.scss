@@ -1,7 +1,45 @@
+@import 'colors';
+
 body {
-    font-size: 1.2rem;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    a {
+        color: $link;
+        text-decoration: none;
+    }
+
+    p {
+        font-size: 1.2rem;
+
+        &.photo-description {
+            font-size: 1rem;
+
+            &:first-of-type {
+                border-top: 1px solid $line;
+                padding-top: 1rem;
+                margin-top: 1rem;
+            }
+        }
+    }
 }
 
-.dog-card {
+.photo-gallery {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.photo-card {
+    border-top: 1px solid $line;
     display: flex;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    img {
+        margin-right: 2rem;
+    }
 }
