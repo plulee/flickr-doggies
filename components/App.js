@@ -192,7 +192,7 @@ class PhotosList extends React.Component {
     }
 }
 
-/* GoogleMap component - returned when langitude and latitude provided */
+/* GoogleMap component - returned when longitude and latitude provided */
 const GoogleMap = (props) => {
     if (props.latitude !== "0" && props.longitude !== "0") {
         return <iframe width="300" height="150" frameBorder="0"
@@ -202,7 +202,7 @@ const GoogleMap = (props) => {
     }
 };
 
-/* Single photo with its captions component */
+/* Single photo and its captions */
 const PhotoCard = (props) => {
     const checkIfEmpty = text => {
         if (typeof text === "undefined" || text === "") {
@@ -217,7 +217,7 @@ const PhotoCard = (props) => {
             <img src={props.url} />
             <div>
                 <p><strong>Title: </strong><span className="photo-title">{checkIfEmpty(props.title)}</span></p>
-                <p><strong>Author: </strong><a href={`https://www.flickr.com/photos/${props.ownerId}`} target="_blank" title="author's other pictures">{props.ownerName}</a></p>
+                <p><strong>Author: </strong><a href={`https://www.flickr.com/photos/${props.ownerId}`} target="_blank" rel="noopener noreferrer" title="author's other pictures">{props.ownerName}</a></p>
                 <p><strong>Description: </strong>{checkIfEmpty(props.description)}</p>
                 <p><strong>Taken: </strong>{props.dateTaken}</p>
                 <GoogleMap latitude={props.latitude} longitude={props.longitude} />
