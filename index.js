@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles/main.scss";
 
 // main app
-import App from "./scripts/App";
+import App from "./components/App";
 
 document.addEventListener("DOMContentLoaded", function() {
     ReactDOM.render(

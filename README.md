@@ -1,3 +1,3 @@
-# flickr-doggies
+# Flickr Photo Search
 
-find dogs on flickr
+Find dogs or other photos posted on Flickr based on tags provided by user.
