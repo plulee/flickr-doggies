@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+/* Main component with header and photo gallery */
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
@@ -43,20 +44,22 @@ class Gallery extends React.Component {
         }
     }
 
+    /* Handle input */
     handleChange(event) {
         this.setState({
             tags: event.target.value
         });
     }
 
+    /* Handle checkbox */
     handleCheck() {
         this.setState({
-            onlyGeo: !this.state.onlyGeo}
-        );
+            onlyGeo: !this.state.onlyGeo
+        });
     }
 
     render() {
-        /*limit photos showed to make loading smoother*/
+        /* Limit photos showed to make loading smoother */
         let photosBundleLimit = 5;
         if (this.state.onlyGeo) {
             photosBundleLimit = 2;
@@ -74,6 +77,7 @@ class Gallery extends React.Component {
     }
 }
 
+/* List of photos */
 class PhotosList extends React.Component {
     constructor(props) {
         super(props);
@@ -88,6 +92,7 @@ class PhotosList extends React.Component {
         };
     }
 
+    /* Request Flickr api for photos */
     requestPhotos() {
         const apiKey = "7e35ea37110806c7b4fe6267662f21f4";
         const apiLink = "http://api.flickr.com/services/rest/";
@@ -143,6 +148,7 @@ class PhotosList extends React.Component {
         this.requestPhotos();
     }
 
+    /* Show errors to user and log them to console */
     returnError(error) {
         /* eslint-disable no-console*/
         console.log(`ERROR: ${error}`);
@@ -186,6 +192,7 @@ class PhotosList extends React.Component {
     }
 }
 
+/* GoogleMap component - returned when langitude and latitude provided */
 const GoogleMap = (props) => {
     if (props.latitude !== "0" && props.longitude !== "0") {
         return <iframe width="300" height="150" frameBorder="0"
@@ -195,6 +202,7 @@ const GoogleMap = (props) => {
     }
 };
 
+/* Single photo with its captions component */
 const PhotoCard = (props) => {
     const checkIfEmpty = text => {
         if (typeof text === "undefined" || text === "") {
@@ -209,7 +217,7 @@ const PhotoCard = (props) => {
             <img src={props.url} />
             <div>
                 <p><strong>Title: </strong><span className="photo-title">{checkIfEmpty(props.title)}</span></p>
-                <p><strong>Author: </strong><a href={`https://www.flickr.com/photos/${props.ownerId}`} title="author's other pictures">{props.ownerName}</a></p>
+                <p><strong>Author: </strong><a href={`https://www.flickr.com/photos/${props.ownerId}`} target="_blank" title="author's other pictures">{props.ownerName}</a></p>
                 <p><strong>Description: </strong>{checkIfEmpty(props.description)}</p>
                 <p><strong>Taken: </strong>{props.dateTaken}</p>
                 <GoogleMap latitude={props.latitude} longitude={props.longitude} />
@@ -218,6 +226,7 @@ const PhotoCard = (props) => {
     );
 };
 
+/* Typechecking with PropTypes */
 Gallery.propTypes = {
     tags: PropTypes.string,
 };
